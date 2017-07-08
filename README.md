@@ -1,8 +1,8 @@
-# Creating an Ionic 3 PWA from scratch to deploy
+# Creating an Ionic 3 PWA from scratch to deploy
 
 [https://zwacky.github.io/workshop-ionic-pwa/](https://zwacky.github.io/workshop-ionic-pwa/#/)
 
-## Sources
+## Sources
 
 - Ionic: http://ionicframework.com/
 - sw-toolbox: https://github.com/GoogleChrome/sw-toolbox
