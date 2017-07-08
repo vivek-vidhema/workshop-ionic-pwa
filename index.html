@@ -1,0 +1,354 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Ionic PWA Workshop</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+ 
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+    <style>
+      .gold {
+        color: #fbc500 !important;
+      }
+      .title--normal {
+        font-family: 'Open Sans' !important; font-weight: 300;
+      }
+      .hr--fancy {
+        position: absolute; width: 55%; left: 50%; transform: translateX(-50%); opacity: 0.4 !important;
+      }
+      .hr--text {
+        font-family: 'Lobster' !important; text-transform: lowercase; position: relative; top: -15px; font-size: 60px !important; vertical-align: middle !important; background-color: #222 !important; padding: 0 20px !important;
+      }
+      .title--fancy {
+        font-family: 'Josefin Slab' !important; color: #fbc500 !important; text-transform: capitalize !important;
+      }
+      li {
+        list-style: square;
+      }
+      ul ul li {
+        opacity: 0.40;
+      }
+    </style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+        <section>
+
+          <h1 style="position: relative;">
+            <span class="title--normal">Create a PWA</span><br>
+            <hr class="hr--fancy" style="">
+            <span class="hr--text">from scratch</span><br>
+            <span class="title--fancy">with Ionic</span>
+          </h1>
+
+          <!--<h1 style="position: relative;">
+            <span class="title--normal">Create a PWA from Scratch</span><br>
+            <hr class="hr--fancy" style="">
+            <span class="hr--text">with</span><br>
+            <span class="title--fancy">Ionic</span>
+          </h1>-->
+
+        </section>
+
+        <section>
+          <h1 class="title--fancy">Agenda</h1>
+
+          <ul>
+            <li>Intro (15')</li>
+            <li>Demo what we build (5')</li>
+            <li>Build PWA in <span class="gold">9</span> steps (120')</li>
+            <ul>
+              <li>show, code, question</li>
+            </ul>
+            <li>Open Workshop (adding more features) (~)</li>
+          </ul>
+
+        </section>
+
+        <section>
+          <h1 class="title--fancy">Who dis</h1>
+
+          <div style="width: 50%; float: right !important;">
+            <ul>
+              <li>Simon (@zwacky)</li>
+              <li>Working with Ionic since over 2.5 years</li>
+              <li>Co-Organizer of IonicBerlin</li>
+              <li>Working at <a href="https://www.justwatch.com/us"><span class="gold">JustWatch</span></a></li>
+              <ul>
+                <li>Team of 40 in Berlin & LA</li>
+                <li>Mobile: 3M+ downloads</li>
+                <li>Web: 12M+ monthly active users</li>
+              </ul>
+            </ul>
+          </div>
+
+          <div style="width: 50%; float: left !important;">
+            <img src="./img/jw-mock.png" alt="JW mock" style="border: 0; background-color: transparent; box-shadow: none; padding-right: 10%;">
+          </div>
+
+        </section>
+
+        <section>
+          <h1 class="title--fancy">Short Intros</h1>
+
+          <ul>
+            <li>Ionic</li>
+            <ul>
+              <li>Hybrid Framework: Code once & run everywhere</li>
+              <li>based on AngularJS and Angular</li>
+              <li>Great and big community</li>
+            </ul>
+            <li>PWA</li>
+            <ul>
+              <li>WebApps with native-like capabilities</li>
+              <ul>
+                <li>Offline</li>
+                <li>Push notifications</li>
+                <li>…</li>
+              </ul>
+            </ul>
+          </ul>
+
+        </section>
+
+        <section>
+
+          <h1 class="title--fancy">Topics</h1>
+
+          <ul>
+            <li>Bootstrapping a PWA</li>
+            <li>Ionic, Ionic CLI, Ionic Router</li>
+            <li>Angular & Observables</li>
+            <li>ServiceWorkers</li>
+            <li>Deploy on Firebase</li>
+          </ul>
+
+        </section>
+
+        <section>
+          
+          <h1 class="title--fancy">PWA: NewsFeed Reader</h1>
+
+          <div><a href="http://localhost:8100">Demo on/offline</a></div>
+
+        </section>
+
+        <section>
+          <h1 class="title--fancy">Let's do this!</h1>
+
+          <img src="http://i.imgur.com/pzw4C8l.gif">
+
+        </section>
+
+        <section>
+          <h1 class="title--fancy">1) Prerequisites</h1>
+
+          <ul>
+            <li><code>npm install -g ionic</code></li>
+            <ul>
+              <li>ionic@3.4.0</li>
+            </ul>
+            <li>newsapi.org</li>
+            <li><code>ionic start barcelona-newsreader ionic2-starter-sidemenu</code></li>
+          </ul>
+        </section>
+
+        <section>
+          
+          <h1 class="title--fancy">2) Ionic Starters</h1>
+
+          <ul>
+            <li>ionic2-starter-tabs
+            <li>ionic2-starter-tutorial</li>
+            <li>ionic2-starter-aws</li>
+            <li>ionic2-starter-sidemenu</li>
+            <li>ionic2-starter-blank</li>
+            <ul>
+              <li>https://market.ionic.io/starters</li>
+            </ul>
+          </ul>
+
+        </section>
+
+        <section>
+          
+          <h1 class="title--fancy">3) Project structure</h1>
+
+          <ul>
+            <li>/hooks</li>
+            <li>/resources</li>
+            <li>/src</li>
+            <li>/www</li>
+            <li>.editorconfig</li>
+          </ul>
+
+        </section>
+
+        <section>
+
+          <h1 class="title--fancy">4) Sources in side menu</h1>
+
+          <ul>
+            <li>affected files:</li>
+            <ul>
+              <li>app.html</li>
+              <li>app.component.ts</li>
+            </ul>
+            <li><code><a href="http://blog.ionic.io/ionic-2-2-0-is-out/">ion-split-pane</a></code></li>
+            <li>import angular's Http & HttpModule</li>
+          </ul>
+          
+        </section>
+
+        <section>
+
+          <h1 class="title--fancy">5) Add new page</h1>
+
+          <ul>
+            <li><code>ionic generate page news</code></li>
+            <li>news.html</li>
+            <ul>
+              <li><a href="https://ionicframework.com/docs/components/#card-image">ion-card</a> (more 🔥: social cards)</li>
+            </ul>
+          </ul>
+          
+        </section>
+
+        <section>
+          
+          <h1 class="title--fancy">6) Populate news</h1>
+
+          <ul>
+            <li>news.ts</li>
+            <ul>
+              <li>Get news articles</li>
+            </ul>
+            <li>news.html</li>
+            <ul>
+              <li><code>*ngFor</code> it</li>
+            </ul>
+          </ul>
+
+        </section>
+
+        <section>
+
+          <section>
+
+            <h1 class="title--fancy">7) Use ionic's router</h1>
+
+            <ul>
+              <li><span class="gold">setRoot</span> vs <span class="gold">push & pop</span> (below)</li>
+              <li>news.ts</li>
+              <ul>
+                <li><code>@IonicPage(name, segment)</code></li>
+                <li>use <code>navParams.data.newsName</code></li>
+              </ul>
+              <li>app.component.ts</li>
+              <ul>
+                <li>pick random news source</li>
+              </ul>
+            </ul>
+
+          </section>
+
+          <section>
+            <img src="http://blog.ionic.io/wp-content/uploads/2017/03/split-pane-nav.gif">
+          </section>
+
+        </section>
+
+        <section>
+
+          <h1 class="title--fancy">8) Enable Service Workers</h1>
+
+<pre><code>
+  self.toolbox.router.get('/(.*)', self.toolbox.cacheFirst);
+  self.toolbox.router.get('/(.*)', self.toolbox.cacheFirst, {
+	  origin: /newsapi\.org$/
+  });
+
+</code></pre>
+
+        </section>
+
+        <section>
+
+            <h1 class="title--fancy">9) Deploy 🚀</h1>
+
+            <ul>
+              <li><code>ionic cordova run browser --prod</code></li>
+              <li><code>npm install -g firebase-tools</code></li>
+              <li>Cache busting problem</li>
+              <li><a href="https://www.firebase.com">firebase.com</a></li>
+              <ul>
+                <li>.firebaserc</li>
+                <li><code>firebase init</code></li>
+                <li>public: <code>./platforms/browser/www</code></li>
+                <li><code>firebase deploy</code></li>
+              </ul>
+            </ul>
+
+        </section>
+
+        <section>
+          <h1 class="title--fancy">More Resources</h1>
+
+          <ul>
+            <li>https://github.com/shprink/ionic-twitter-pwa</li>
+            <li>https://github.com/zwacky/game-music-player</li>
+            <li>https://github.com/GoogleChrome/sw-precache</li>
+            <li>https://workboxjs.org</li>
+          </ul>
+        </section>
+
+        <section>
+
+          <h1 class="title--fancy">Done. 💅✨</h1>
+
+        </section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
